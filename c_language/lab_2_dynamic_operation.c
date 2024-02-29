@@ -27,9 +27,9 @@ int main()
     {
         scanf("%d", &arr[i]);
     }
-    printf("MENU:\n Press 1 for linear searching\n Press 2 to update string (multiply elements at even indices by 2 and add 5 to the element at odd indices)\n press 3 to insert an element at an particular position (by creating a new memory)\n Press 4 for sorting\n Press 5 to exit.\n");
+    printf("MENU:\n Press 1 for linear searching\n Press 2 to update string (multiply elements at even indices by 2 and add 5 to the element at odd indices)\n Press 3 to insert an element at an particular position (by creating a new memory)\n Press 4 for deletion of an element\n Press 5 for sorting\n Press 6 to exit.\n");
     scanf("%d", &num);
-    while (num != 5)
+    while (num != 6)
     {
         switch (num)
         {
@@ -79,6 +79,23 @@ int main()
                 }
             break;
             case 4:
+                printf("Enter the index to be deleted: \n");
+                scanf("%d", &num3);
+                for (int i = num3; i < a-1; i++)
+                {
+                    arr[i] = arr[i+1];                    
+                }
+                int* temp = (int*)realloc(arr, (a-1)* sizeof(int));
+                if (temp != NULL) {
+                arr = temp;
+                a--;  // Update the size of the array
+                printf("Element deleted successfully\n");
+                } else 
+                {
+                    printf("Memory reallocation failed\n");
+                }
+            break;
+            case 5:
                 // Sorting using Bubble Sort
                 for (int i = 0; i < a - 1; i++) {
                     for (int j = 0; j < a - i - 1; j++) {
@@ -106,7 +123,8 @@ int main()
                     printf("%d ", arr[i]);
                 }
         printf("\n");
-        printf("MENU:\nPress 1 for linear searching\nPress 2 to update string (multiply elements at even indices by 2 and add 5 to the element at odd indices)\nPress 3 to insert an element at a particular position (by creating new memory)\nPress 4 for sorting\nPress 5 to exit.\n");
+        printf("MENU:\n Press 1 for linear searching\n Press 2 to update string (multiply elements at even indices by 2 and add 5 to the element at odd indices)\n Press 3 to insert an element at an particular position (by creating a new memory)\n Press 4 for deletion of an element\n Press 5 for sorting\n Press 6 to exit.\n");
+
         scanf("%d", &num);
         }   
         free(arr);
